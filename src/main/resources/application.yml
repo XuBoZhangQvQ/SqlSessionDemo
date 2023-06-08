@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    dynamic:
+      primary: datasource1
+      datasource:
+        #datasource1
+        datasource1:
+          url: jdbc:mysql://127.0.0.1/datasource1
+          username: root
+          password: 123456
+          type: com.alibaba.druid.pool.DruidDataSource
+        #datasource2
+        datasource2:
+          url: jdbc:mysql://127.0.0.1/datasource2
+          username: root
+          password: 123456
+          type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印mybatis sql日志
