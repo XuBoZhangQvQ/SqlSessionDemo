@@ -22,8 +22,12 @@ public class TestController {
     @Autowired
     DataSource2SqlSession dataSource2SqlSession;
 
+    /**
+     * 两个数据源,批量新增提交
+     * @return
+     */
     @GetMapping("/test")
-    public String test() {
+    public String testBatchInsert() {
 
         try {
             //初始化数据源
@@ -37,7 +41,8 @@ public class TestController {
             }
             dataSource1SqlSession.insertUserList(users);
             dataSource2SqlSession.insertUserList(users);
-            //预处理 sql
+            //预处理 sql,如果有一个数据源数据写入失败,报错,则进入catch全部回滚
+            //简单处理分布式事务
             dataSource1SqlSession.flushStatements();
             dataSource2SqlSession.flushStatements();
             //提交事务
