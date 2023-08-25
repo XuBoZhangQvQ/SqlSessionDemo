@@ -15,4 +15,9 @@
         id, name, created_time, update_time
     </sql>
 
+    <select id="selectCustome" resultType="java.lang.String">
+        select name
+        from user
+        where id = 1
+    </select>
 </mapper>

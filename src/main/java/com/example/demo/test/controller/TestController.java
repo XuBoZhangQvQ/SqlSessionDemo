@@ -1,6 +1,7 @@
 package com.example.demo.test.controller;
 
 import com.example.demo.common.entity.User;
+import com.example.demo.common.mapper.UserMapper;
 import com.example.demo.test.sqlsession.datasource1.DataSource1SqlSession;
 import com.example.demo.test.sqlsession.datasource2.DataSource2SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,12 @@ public class TestController {
     @Autowired
     DataSource2SqlSession dataSource2SqlSession;
 
+    @Autowired
+    UserMapper userMapper;
+
     /**
      * 两个数据源,批量新增提交
+     *
      * @return
      */
     @GetMapping("/test")
@@ -60,4 +65,18 @@ public class TestController {
         }
 
     }
+
+    /**
+     * 两个数据源,批量新增提交
+     *
+     * @return
+     */
+    @GetMapping("/test1")
+    public String test1() {
+
+        return userMapper.selectCustome();
+
+    }
+
+
 }
